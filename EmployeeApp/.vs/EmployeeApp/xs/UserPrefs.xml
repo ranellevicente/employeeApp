@@ -1,0 +1,37 @@
+﻿<Properties StartupConfiguration="{1A611588-9AD2-448F-B432-B058DEE67EE9}|">
+  <MonoDevelop.Ide.ItemProperties.EmployeeApp PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EmployeeApp/Models/EmployeeModel.cs">
+    <Files>
+      <File FileName="EmployeeApp/Controllers/HomeController.cs" Line="94" Column="28" />
+      <File FileName="EmployeeApp/Views/Home/Index.cshtml" Line="81" Column="76" />
+      <File FileName="EmployeeApp/Views/Home/Edit.cshtml" Line="74" Column="46" />
+      <File FileName="EmployeeApp/Views/Home/Details.cshtml" Line="79" Column="8" />
+      <File FileName="EmployeeApp/Views/Home/Delete.cshtml" Line="78" Column="14" />
+      <File FileName="EmployeeApp/Views/Home/Create.cshtml" Line="75" Column="8" />
+      <File FileName="EmployeeApp/Models/EmployeeModel.cs" Line="42" Column="236" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="EmployeeApp" expanded="True">
+            <Node name="EmployeeApp" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="EmployeeModel.cs" selected="True" />
+              </Node>
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

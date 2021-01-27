@@ -1,0 +1,2 @@
+If we are going to deploy this in the production: 
+The next improvement should I prioritize is to create a dedicated database, since the data management is still handled by the memory list as of the moment. And after that, We should implement a new and modern Front-End framework/library like "ReactJs" for it's advantages on the separation of concerns using the components feature of React to better maintain and create a stable code. And finally to make the user experience seamless, beautiful and faster. 

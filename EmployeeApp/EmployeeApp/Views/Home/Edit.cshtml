@@ -1,0 +1,153 @@
+﻿@model EmployeeApp.Models.EmployeeModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <script>
+        window.onload = function () {
+            let salary = $('#Salary');
+            let absences = $('#Absences')
+            let workDays = $('#WorkDays');
+            let finalSalary = $('#FinalSalary');
+            let employeeType = $('#EmployeeType');
+
+            function computeSalary() {
+                let requiredWorkingDays = 23;
+                let absentDeduction = 0;
+                let salaryVal = salary.val();
+                let absencesVal = absences.val();
+                let totalFinalSalary = 0;
+
+                if (employeeType.val() === 'Regular') {
+                    absentDeduction = requiredWorkingDays - absencesVal;
+                    finalSalary.val(salaryVal - (salaryVal / absentDeduction) - salaryVal * 0.12);
+                    totalFinalSalary = parseFloat(finalSalary.val()).toFixed(2);
+
+                    finalSalary.val(totalFinalSalary);
+                } else {
+                    totalFinalSalary = workDays.val() * 500;
+
+                    finalSalary.val(parseFloat(totalFinalSalary).toFixed(2));
+                }
+            }
+
+            document.getElementById("calculate").onclick = function () { computeSalary() };
+
+            function hideOrShow() {
+                if (employeeType.val() == 'Regular') {
+                    document.getElementById("Absences").disabled = false;
+                    document.getElementById("WorkDays").disabled = true;
+                    document.getElementById("Salary").disabled = false;
+                    document.getElementById("FinalSalary").setAttribute('readonly', true);
+                } else {
+                    document.getElementById("Absences").disabled = true;
+                    document.getElementById("WorkDays").disabled = false;
+                    document.getElementById("Salary").disabled = true;
+                    document.getElementById("FinalSalary").setAttribute('readonly', true);
+                }
+            }
+
+            hideOrShow();
+
+            document.getElementById("EmployeeType").onchange = function () { hideOrShow() };
+        };
+
+    </script>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Employees</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BirthDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Tin, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Tin, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Tin, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmployeeType, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.EmployeeType, new SelectList(Enum.GetValues(typeof(EmployeeApp.Models.EmployeeModel.EmploymentType))), new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmployeeType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Absences, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Absences, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Absences, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.WorkDays, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WorkDays, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.WorkDays, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FinalSalary, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FinalSalary, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FinalSalary, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" id="Save" value="Save" class="btn btn-default" />
+                    <button type="button" class="btn btn-info" id="calculate" value="calculate">Calculate</button>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

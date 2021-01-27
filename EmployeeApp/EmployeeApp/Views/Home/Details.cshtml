@@ -1,0 +1,84 @@
+﻿@model EmployeeApp.Models.EmployeeModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Employee</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BirthDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Tin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Tin)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EmployeeType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EmployeeType)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Salary)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Salary)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Absences)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Absences)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.WorkDays)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.WorkDays)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.FinalSalary)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FinalSalary)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { Id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
